@@ -6,8 +6,6 @@ import QRCode from 'qrcode'
 
 export const generateQrcode = async (context: HookContext) => {
   console.log(`Running hook generate-qrcode on ${context.path}.${context.method}`)
-
-  console.log(context?.params)
   const data = context.params;
   const { certificateSvg, verificationUrl, certificateId } = data;
 
@@ -49,6 +47,5 @@ export const generateQrcode = async (context: HookContext) => {
 
     console.log('qrcode done')
 
- console.log('Data:', context.data);
 }
 
