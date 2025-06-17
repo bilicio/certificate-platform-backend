@@ -37,12 +37,12 @@
   "scripts": {
     "postinstall": "patch-package",
     "dev": "nodemon -x ts-node src/index.ts",
-    "compile": "shx rm -rf lib/ && tsc && postinstall",
+    "compile": "shx rm -rf lib/ && tsc",
     "start": "node lib/",
     "prettier": "npx prettier \"**/*.ts\" --write",
     "mocha": "cross-env NODE_ENV=test mocha test/ --require ts-node/register --recursive --extension .ts --exit",
     "test": "npm run mocha",
-    "bundle:client": "npm run compile && npm pack --pack-destination ./public"
+    "bundle:client": "npm run compile && npm pack --pack-destination ./public && postinstall"
   },
   "dependencies": {
     "@feathersjs/adapter-commons": "^5.0.34",
