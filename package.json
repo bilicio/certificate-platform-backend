@@ -37,7 +37,7 @@
   "scripts": {
     "postinstall": "patch-package",
     "dev": "nodemon -x ts-node src/index.ts",
-    "compile": "shx rm -rf lib/ && tsc",
+    "compile": "shx rm -rf lib/ && tsc && postinstall",
     "start": "node lib/",
     "prettier": "npx prettier \"**/*.ts\" --write",
     "mocha": "cross-env NODE_ENV=test mocha test/ --require ts-node/register --recursive --extension .ts --exit",
