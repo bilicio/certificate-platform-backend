@@ -2,11 +2,7 @@
 
 import { Jimp } from 'jimp'
 import type { HookContext } from '../declarations'
-import supabaseClient from '../supabase'
 import QRCode from 'qrcode'
-const svg2img = require('svg2img');
-const fs = require('fs');
-
 
 export const generateQrcode = async (context: HookContext) => {
   console.log(`Running hook generate-qrcode on ${context.path}.${context.method}`)
@@ -35,7 +31,7 @@ export const generateQrcode = async (context: HookContext) => {
         // Composite the images
         overlayImage.composite(qrCodeImage, x, y);
 
-        const qrcodePath = `${process.cwd()}/teste.png` as `${string}.${string}`;
+        //const qrcodePath = `${process.cwd()}/teste.png` as `${string}.${string}`;
         // Save the result
 
       
