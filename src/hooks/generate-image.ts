@@ -43,7 +43,7 @@ export const generateImage = async (context: HookContext) => {
       //const uploadResult = await uploadCertificateImage(certificateSvg, data.certificateId);
       //console.log('Certificate image uploaded, result:', uploadResult);
 
-      const verificationUrl = `https://certificate-platform.onrender.com/verify/${certificateId}`;
+      const verificationUrl = `https://certificate.42sp.org.br/verify/${certificateId}`;
 
       context.params = {
       ...context.params,
