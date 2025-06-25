@@ -26,8 +26,8 @@ export const generateQrcode = async (context: HookContext) => {
         //const x = (overlayImage.width - qrCodeImage.width) - 40; // 10 pixels from the right
         //const y = (overlayImage.height - qrCodeImage.height) - 40;
 
-        const x = 900; // 40 pixels from the right
-        const y = 700; // 40 pixels from the bottom
+        const x = 1100; // 40 pixels from the right
+        const y = 800; // 40 pixels from the bottom
 
         // Composite the images
         overlayImage.composite(qrCodeImage, x, y);
