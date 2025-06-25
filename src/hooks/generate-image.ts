@@ -119,18 +119,13 @@ const generatePngCertificate = async (
 
   if (config.recipientName) {
     drawText(
-      recipientName,
+      recipientName.toUpperCase(),
       config.recipientName.x ? config.recipientName.x * 2 : width / 2,
       config.recipientName.y ? config.recipientName.y * 2 : 540,
-      `bold ${config.recipientName.fontSize ? config.recipientName.fontSize * 2 : 56}px serif`,
+      `bold ${config.recipientName.fontSize ? config.recipientName.fontSize * 2 : 25}px arial`,
       config.recipientName.color || '#2c3e50'
     )
-    ctx.strokeStyle = '#34495e'
-    ctx.lineWidth = 2
-    ctx.beginPath()
-    ctx.moveTo(width / 2 - 400, 570)
-    ctx.lineTo(width / 2 + 400, 570)
-    ctx.stroke()
+    
   }
 
   if (config.courseName) {
