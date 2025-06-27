@@ -11,12 +11,13 @@ export const generateCertificateSchema = {
   $id: 'GenerateCertificate',
   type: 'object',
   additionalProperties: false,
-  required: ['id', 'certificateId', 'templateId', 'recipientName', 'courseName','companyName'],
+  required: ['id', 'certificateId', 'templateId', 'recipientName', 'courseName','companyName', 'recipientEmail'],
   properties: {
     id: { type: 'number' },
     certificateId: { type: 'string' },
     templateId: { type: 'string' },
     recipientName: { type: 'string' },
+    recipientEmail: { type: 'string' },
     courseName: { type: 'string' },
     date: { type: 'string'},
     companyName: { type: 'string' },
@@ -39,7 +40,7 @@ export const generateCertificateDataSchema = {
   $id: 'GenerateCertificateData',
   type: 'object',
   additionalProperties: false,
-  required: ['certificateId', 'templateId', 'recipientName', 'courseName', 'date', 'companyName'],
+  required: ['certificateId', 'templateId', 'recipientName', 'courseName', 'date', 'companyName', 'recipientEmail'],
   properties: {
     ...generateCertificateSchema.properties
   }

@@ -5,11 +5,11 @@ import type { HookContext } from '../declarations'
 import QRCode from 'qrcode'
 
 export const generateQrcode = async (context: HookContext) => {
-  console.log(`Running hook generate-qrcode on ${context.path}.${context.method}`)
+  
   const data = context.params;
   const { certificateSvg, verificationUrl, certificateId } = data;
 
-  
+  console.log(`Generate QR code hook running for ${verificationUrl}`);
 
    try {
         // Generate QR code
@@ -38,6 +38,7 @@ export const generateQrcode = async (context: HookContext) => {
       
 
         context.params = {
+          ...context.params,
           certificatePng: overlayImage,
           certificateId
         }

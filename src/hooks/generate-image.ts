@@ -8,17 +8,21 @@ const corsHeaders = {
 };
 
 export const generateImage = async (context: HookContext) => {
-  console.log(`Running hook generate-image on ${context.path}.${context.method}`)
+  
   const data = context.data;
-  const { certificateId, recipientName, courseName, date, companyName, templateId } = data;
-  console.log('Received data:', {
+  const { certificateId, recipientName, recipientEmail, courseName, date, companyName, templateId } = data;
+
+  console.log(`Generate image hook running for ${recipientEmail}`);
+
+  /*console.log('Received data:', {
     recipientName,
+    recipientEmail,
     courseName,
     date,
     companyName,
     templateId,
     certificateId
-  });
+  });*/
 
   const { data: template, error: templateError } = await supabaseClient.from('certificate_templates').select('*').eq('id', templateId).single();
       if (templateError || !template) {
@@ -33,24 +37,21 @@ export const generateImage = async (context: HookContext) => {
           }
         });
       }
-      console.log('Template found:', template.name);
-      console.log('Template image URL:', template.image_url);
-      console.log('Template config:', template.config);
       const config = template.config || {};
 
       const certificateSvg = await generatePngCertificate(template, config, recipientName, courseName, date, companyName);
       console.log('Certificate SVG generated using template, length:', certificateSvg.length);
-      //const uploadResult = await uploadCertificateImage(certificateSvg, data.certificateId);
-      //console.log('Certificate image uploaded, result:', uploadResult);
 
       const verificationUrl = `https://certificate.42sp.org.br/verify/${certificateId}`;
 
       context.params = {
-      ...context.params,
-      certificateSvg,
-      verificationUrl,
-      certificateId
-    }
+        recipientName,
+        recipientEmail,
+        certificateSvg,
+        verificationUrl,
+        certificateId
+      };
+    
 
 }
 

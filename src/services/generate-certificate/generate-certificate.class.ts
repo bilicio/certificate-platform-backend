@@ -40,6 +40,7 @@ export class GenerateCertificateService<
       certificateId: '',
       templateId: '',
       recipientName: '',
+      recipientEmail: '',
       courseName: '',
       companyName: '',
       // Optionally include date if needed, e.g.:
@@ -85,6 +86,7 @@ export class GenerateCertificateService<
       certificateId: '',
       templateId: '',
       recipientName: '',
+      recipientEmail: '',
       courseName: '',
       companyName: ''
       // Optionally include date if needed, e.g.:
@@ -98,6 +100,7 @@ export class GenerateCertificateService<
       certificateId: '',
       templateId: '',
       recipientName: '',
+      recipientEmail: '',
       courseName: '',
       companyName: ''
       // Optionally include date if needed, e.g.:

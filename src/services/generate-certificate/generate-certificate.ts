@@ -19,6 +19,8 @@ import { generateCertificatePath, generateCertificateMethods } from './generate-
 import { generateImage } from '../../hooks/generate-image'
 import { generateQrcode } from '../../hooks/generate-qrcode'
 import { uploadStorage } from '../../hooks/upload-storage'
+import { mailImersionCertificate } from '../../hooks/mail-imersion-certificate'
+import { testHook } from '../../hooks/test-hook'
 
 export * from './generate-certificate.class'
 export * from './generate-certificate.schema'
@@ -54,6 +56,7 @@ export const generateCertificate = (app: Application) => {
         generateImage,
         generateQrcode,
         uploadStorage
+        
       ],
       patch: [
         schemaHooks.validateData(generateCertificatePatchValidator),
@@ -62,7 +65,7 @@ export const generateCertificate = (app: Application) => {
       remove: []
     },
     after: {
-      all: []
+      all: [mailImersionCertificate]
     },
     error: {
       all: []

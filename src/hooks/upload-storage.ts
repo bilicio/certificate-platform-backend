@@ -7,7 +7,7 @@ const corsHeaders = {
 };
 
 export const uploadStorage = async (context: HookContext) => {
-  console.log(`Running hook upload-storage on ${context.path}.${context.method}`)
+  console.log(`Running hook upload-storage`);
   const data = context.params;
   const { certificateId, certificatePng } = data;
 
@@ -40,8 +40,6 @@ export const uploadStorage = async (context: HookContext) => {
         });
       }
 
-      console.log('Certificate uploaded to storage:', uploadData.path);
-
       const { data: urlData } = supabaseClient.storage.from('certificates').getPublicUrl(fileName);
       const certificateImageUrl = urlData.publicUrl;
 
@@ -49,10 +47,32 @@ export const uploadStorage = async (context: HookContext) => {
         certificate_url: certificateImageUrl
       }).eq('id', certificateId);
 
-      context.result = {
-        success: true,
-        certificate_url: certificateImageUrl,
+      if (updateError) {
+        console.error('Error updating certificate URL in database:', updateError);
+        return new Response(JSON.stringify({
+          error: 'Failed to update certificate URL in database',
+          details: updateError.message
+        }), {
+          status: 500,
+          headers: {
+            ...corsHeaders,
+            'Content-Type': 'application/json'
+          }
+        });
       }
 
-      return context
+      context.params = {
+      ...context.params,
+      certificateUrl:certificateImageUrl,
+
+    }
+
+    context.result = {
+        success: true,
+        certificate_url: certificateImageUrl,
+  }
+
+  
+  console.log('Certificate image uploaded successfully:', certificateImageUrl);
+    return context
 }

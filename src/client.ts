@@ -4,6 +4,14 @@ import type { TransportConnection, Application } from '@feathersjs/feathers'
 import authenticationClient from '@feathersjs/authentication-client'
 import type { AuthenticationClientOptions } from '@feathersjs/authentication-client'
 
+import { sendMailClient } from './services/send-mail/send-mail.shared'
+export type {
+  SendMail,
+  SendMailData,
+  SendMailQuery,
+  SendMailPatch
+} from './services/send-mail/send-mail.shared'
+
 import { generateCertificateClient } from './services/generate-certificate/generate-certificate.shared'
 export type {
   GenerateCertificate,
@@ -39,5 +47,6 @@ export const createClient = <Configuration = any,>(
   client.set('connection', connection)
 
   client.configure(generateCertificateClient)
+  client.configure(sendMailClient)
   return client
 }
