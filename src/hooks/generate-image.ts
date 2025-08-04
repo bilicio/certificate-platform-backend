@@ -42,7 +42,7 @@ export const generateImage = async (context: HookContext) => {
       const certificateSvg = await generatePngCertificate(template, config, recipientName, courseName, date, companyName);
       console.log('Certificate SVG generated using template, length:', certificateSvg.length);
 
-      const verificationUrl = `https://certificate.42sp.org.br/verify/${certificateId}`;
+      const verificationUrl = `https://certificate-platform.onrender.com/verify/${certificateId}`;
 
       context.params = {
         recipientName,
