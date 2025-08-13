@@ -11,7 +11,7 @@ export const generateCertificateSchema = {
   $id: 'GenerateCertificate',
   type: 'object',
   additionalProperties: false,
-  required: ['id', 'certificateId', 'templateId', 'recipientName', 'courseName','companyName', 'recipientEmail'],
+  required: ['id', 'certificateId', 'templateId', 'recipientName', 'courseName','companyName', 'recipientEmail', 'sendMail'],
   properties: {
     id: { type: 'number' },
     certificateId: { type: 'string' },
@@ -21,6 +21,7 @@ export const generateCertificateSchema = {
     courseName: { type: 'string' },
     date: { type: 'string'},
     companyName: { type: 'string' },
+    sendMail: { type: 'boolean' }
   }
 } as const
 export type GenerateCertificate = FromSchema<typeof generateCertificateSchema>

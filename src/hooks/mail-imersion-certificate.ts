@@ -5,10 +5,11 @@ export const mailImersionCertificate = async (context: HookContext) => {
   console.log(`Running hook mail-imersion-certificate on ${context.path}.${context.method}`)
 
 
-  const { recipientName, recipientEmail, certificateUrl } = context.params;
+  const { recipientName, recipientEmail, certificateUrl, sendMail } = context.params;
 
-    console.log('Data:', recipientName, recipientEmail, certificateUrl);
+    console.log('Data:', recipientName, recipientEmail, certificateUrl, sendMail);
 
+    if(sendMail){
   const response = await fetch('https://42sp-send-mail.4hkf7y.easypanel.host/send-certificate', {
     method: 'POST',
     headers: {
@@ -23,7 +24,7 @@ export const mailImersionCertificate = async (context: HookContext) => {
   }else{
     console.log('Email sent successfully');
   }
-
-  
-  
+}else{
+  console.log('Email sending skipped');
 }
+};

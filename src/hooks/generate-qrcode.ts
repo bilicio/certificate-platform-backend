@@ -7,7 +7,7 @@ import QRCode from 'qrcode'
 export const generateQrcode = async (context: HookContext) => {
   
   const data = context.params;
-  const { certificateSvg, verificationUrl, certificateId } = data;
+  const { certificateSvg, verificationUrl, certificateId, sendMail } = data;
 
   console.log(`Generate QR code hook running for ${verificationUrl}`);
 
@@ -40,7 +40,8 @@ export const generateQrcode = async (context: HookContext) => {
         context.params = {
           ...context.params,
           certificatePng: overlayImage,
-          certificateId
+          certificateId,
+          sendMail
         }
 
         //await overlayImage.write(qrcodePath);
