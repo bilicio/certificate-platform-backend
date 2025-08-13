@@ -41,7 +41,7 @@ export const generateCertificateDataSchema = {
   $id: 'GenerateCertificateData',
   type: 'object',
   additionalProperties: false,
-  required: ['certificateId', 'templateId', 'recipientName', 'courseName', 'date', 'companyName', 'recipientEmail'],
+  required: ['certificateId', 'templateId', 'recipientName', 'courseName', 'date', 'companyName', 'recipientEmail', 'sendMail'],
   properties: {
     ...generateCertificateSchema.properties
   }

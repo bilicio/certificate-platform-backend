@@ -43,6 +43,7 @@ export class GenerateCertificateService<
       recipientEmail: '',
       courseName: '',
       companyName: '',
+      sendMail: true
       // Optionally include date if needed, e.g.:
       // date: new Date().toISOString()
     }
@@ -88,7 +89,8 @@ export class GenerateCertificateService<
       recipientName: '',
       recipientEmail: '',
       courseName: '',
-      companyName: ''
+      companyName: '',
+      sendMail: true
       // Optionally include date if needed, e.g.:
       // date: new Date().toISOString()
     }
@@ -102,7 +104,8 @@ export class GenerateCertificateService<
       recipientName: '',
       recipientEmail: '',
       courseName: '',
-      companyName: ''
+      companyName: '',
+      sendMail: true
       // Optionally include date if needed, e.g.:
       // date: new Date().toISOString()
     }
