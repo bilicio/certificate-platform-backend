@@ -12,7 +12,7 @@ export const generateImage = async (context: HookContext) => {
   const data = context.data;
   const { certificateId, recipientName, recipientEmail, courseName, date, companyName, templateId, sendMail } = data;
 
-  console.log(`Generate image hook running for ${recipientEmail}`);
+  console.log(`Generate image hook running for ${recipientEmail} - SendMail ${sendMail}`);
 
   /*console.log('Received data:', {
     recipientName,
