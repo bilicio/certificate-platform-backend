@@ -10,9 +10,9 @@ const corsHeaders = {
 export const generateImage = async (context: HookContext) => {
   
   const data = context.data;
-  const { certificateId, recipientName, recipientEmail, courseName, date, companyName, templateId, sendMail } = data;
+  const { certificateId, recipientName, recipientEmail, courseName, date, companyName, templateId, sendOptions } = data;
 
-  console.log(`Generate image hook running for ${recipientEmail} - SendMail ${sendMail}`);
+  console.log(`Generate image hook running for ${recipientEmail} - SendOptions ${sendOptions}`);
 
   /*console.log('Received data:', {
     recipientName,
@@ -50,7 +50,7 @@ export const generateImage = async (context: HookContext) => {
         certificateSvg,
         verificationUrl,
         certificateId,
-        sendMail
+        sendOptions
       };
     
 

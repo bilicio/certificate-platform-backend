@@ -9,7 +9,7 @@ const corsHeaders = {
 export const uploadStorage = async (context: HookContext) => {
   console.log(`Running hook upload-storage`);
   const data = context.params;
-  const { certificateId, certificatePng, sendMail } = data;
+  const { certificateId, certificatePng, sendOptions } = data;
 
    const fileName = `certificate_${certificateId}.png`;
   // Convert Jimp instance to PNG buffer
@@ -64,7 +64,7 @@ export const uploadStorage = async (context: HookContext) => {
       context.params = {
       ...context.params,
       certificateUrl:certificateImageUrl,
-      sendMail
+      sendOptions
     }
 
     context.result = {
