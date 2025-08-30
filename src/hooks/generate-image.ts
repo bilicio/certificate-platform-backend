@@ -123,8 +123,8 @@ const generatePngCertificate = async (
   if (config.recipientName) {
     drawText(
       recipientName.toUpperCase(),
-      config.recipientName.x ? config.recipientName.x * 2 : width / 2,
-      config.recipientName.y ? config.recipientName.y * 2 : 540,
+      config.recipientName.x ? config.recipientName.x * 2 + config.recipientName.width : width / 2,
+      config.recipientName.y ? config.recipientName.y * 2 + config.recipientName.height : 540,
       `bold ${config.recipientName.fontSize ? config.recipientName.fontSize * 2 : 50}px arial`,
       config.recipientName.color || '#2c3e50'
     )
