@@ -7,7 +7,7 @@ import QRCode from 'qrcode'
 export const generateQrcode = async (context: HookContext) => {
   
   const data = context.params;
-  const { certificateSvg, verificationUrl, certificateId, sendOptions } = data;
+  const { certificateSvg, verificationUrl, certificateId, sendOptions, config } = data;
 
   console.log(`Generate QR code hook running for ${verificationUrl}`);
 
@@ -26,8 +26,8 @@ export const generateQrcode = async (context: HookContext) => {
         //const x = (overlayImage.width - qrCodeImage.width) - 40; // 10 pixels from the right
         //const y = (overlayImage.height - qrCodeImage.height) - 40;
 
-        const x = 1300; // 40 pixels from the right
-        const y = 800; // 40 pixels from the bottom
+        const x = config.qrcode.x - config.qrcode.width/2; // 40 pixels from the right
+        const y = config.qrcode.y - config.qrcode.height/2; // 40 pixels from the bottom
 
         // Composite the images
         overlayImage.composite(qrCodeImage, x, y);
