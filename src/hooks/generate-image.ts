@@ -134,8 +134,8 @@ const generatePngCertificate = async (
   if (config.courseName) {
     drawText(
       courseName,
-      config.courseName.x ? config.courseName.x * 2 : width / 2,
-      config.courseName.y ? config.courseName.y * 2 : 760,
+      config.courseName.x ? config.courseName.x * 2 + config.courseName.width : width / 2,
+      config.courseName.y ? config.courseName.y * 2 + config.courseName.height : 760,
       `bold ${config.courseName.fontSize ? config.courseName.fontSize * 2 : 48}px serif`,
       config.courseName.color || '#2c3e50'
     )
@@ -150,8 +150,8 @@ const generatePngCertificate = async (
   if (config.date) {
     drawText(
       `on ${date}`,
-      config.date.x ? config.date.x * 2 : width / 2,
-      config.date.y ? config.date.y * 2 : 880,
+      config.date.x ? config.date.x * 2 + config.date.width : width / 2,
+      config.date.y ? config.date.y * 2 + config.date.height : 880,
       `${config.date.fontSize ? config.date.fontSize * 2 : 32}px serif`,
       config.date.color || '#7f8c8d'
     )
@@ -160,8 +160,8 @@ const generatePngCertificate = async (
   if (config.signature) {
     drawText(
       companyName,
-      config.signature.x ? config.signature.x * 2 : width / 2,
-      config.signature.y ? config.signature.y * 2 : 1000,
+      config.signature.x ? config.signature.x * 2 + config.signature.width : width / 2,
+      config.signature.y ? config.signature.y * 2 + config.signature.height : 1000,
       `bold ${config.signature.fontSize ? config.signature.fontSize * 2 : 36}px serif`,
       config.signature.color || '#2c3e50'
     )
